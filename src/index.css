@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3D Ethereum Animation */
+.ethereum-logo {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  transform-style: preserve-3d;
+  animation: float 6s ease-in-out infinite;
+}
+
+.ethereum-logo::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/ethereum.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotateY(180deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Initial Loading Animation */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeOut 1.5s ease-in-out forwards;
+  animation-delay: 3s;
+}
+
+.loading-ethereum {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  animation: flyIn 3s ease-out forwards;
+  transform: perspective(1000px) rotateX(45deg) scale(0.1);
+  opacity: 0;
+}
+
+.loading-ethereum::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+/* Custom trail effect */
+.loading-ethereum::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  filter: blur(2px);
+  animation: trail 3s ease-out forwards;
+}
+
+@keyframes flyIn {
+  0% {
+    transform: perspective(1000px) rotateX(45deg) translateZ(-1000px) scale(0.1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    transform: perspective(1000px) rotateX(45deg) translateZ(100px) scale(1.2);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(0deg) translateZ(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes trail {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(3);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Update the background pattern styles */
+.bg-ethereum-pattern {
+  background-color: #F5F7FF;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(51, 65, 255, 0.03) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%233341FF' fill-opacity='0.03'%3E%3Cpath d='M50 25L25 50l25 25 25-25z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover, 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat, repeat;
+  position: relative;
+}
+
+/* Add a subtle overlay */
+.bg-ethereum-pattern::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(98, 126, 234, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+/* Make the white cards slightly transparent */
+.bg-white {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(8px);
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.bg-gradient-to-r {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* Update the price and time display container */
+.eth-stats-container {
+  background: linear-gradient(135deg, #1A237E, #311B92);
+  border: 1px solid rgba(137, 155, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(51, 65, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.eth-stats-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(51, 65, 255, 0.25);
+}
+
+.eth-title {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #B0BEC5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.eth-value {
+  font-family: 'JetBrains Mono', monospace;
+  color: #FFFFFF;
+  text-shadow: 0 0 20px rgba(51, 65, 255, 0.6);
+}
+
+/* Update table styles */
+.transaction-table {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 65, 255, 0.1);
+}
+
+.transaction-table th {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #1A237E;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(237, 240, 255, 0.8);
+}
+
+.transaction-row {
+  transition: all 0.2s ease;
+}
+
+.transaction-row:hover {
+  background: rgba(51, 65, 255, 0.03);
+}
+
+/* Update status badges */
+.status-badge-normal {
+  @apply px-2 py-1 rounded-full text-sm;
+  background: rgba(46, 125, 50, 0.1);
+  color: #2E7D32;
+  border: 1px solid rgba(46, 125, 50, 0.2);
+}
+
+.status-badge-suspicious {
+  @apply px-2 py-1 rounded-full text-sm;
+  background: rgba(198, 40, 40, 0.1);
+  color: #C62828;
+  border: 1px solid rgba(198, 40, 40, 0.2);
+}
+
+/* Add styles for the info button */
+.info-button {
+  background: linear-gradient(135deg, #1A237E, #311B92);
+  border: 1px solid rgba(137, 155, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.info-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(51, 65, 255, 0.25);
+}
+
+/* Add 3D Spinning Ethereum styles */
+.spinning-ethereum {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  width: 40px;
+  height: 40px;
+}
+
+.ethereum-logo-3d {
+  animation: spin 8s linear infinite;
+  transform-style: preserve-3d;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  50% {
+    transform: rotateY(180deg) rotateX(30deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(0deg);
+  }
+}
+
+.spinning-ethereum svg {
+  filter: drop-shadow(0 0 10px rgba(98, 126, 234, 0.4));
+}
+
+.ethereum-logo-3d polygon {
+  transition: all 0.3s ease;
+}
+
+.spinning-ethereum:hover .ethereum-logo-3d {
+  animation-play-state: paused;
+}
+
+.spinning-ethereum:hover .ethereum-logo-3d polygon {
+  filter: brightness(1.2);
+}
+
+/* Loading Animation Styles */
+.ethereum-scan-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.ethereum-logo-scan {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.ethereum-scan {
+  filter: drop-shadow(0 0 20px rgba(98, 126, 234, 0.5));
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4C51BF, transparent);
+  animation: scan 2s ease-in-out infinite;
+}
+
+.shield-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate 4s linear infinite;
+}
+
+.shield-icon {
+  color: #4C51BF;
+  opacity: 0.6;
+}
+
+.alerts-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.alert-icon {
+  position: absolute;
+  color: #EF4444;
+  opacity: 0;
+}
+
+.alert-1 {
+  top: 0;
+  left: 0;
+  animation: alertPop 3s ease-in-out infinite;
+}
+
+.alert-2 {
+  top: 50%;
+  right: 0;
+  animation: alertPop 3s ease-in-out infinite 1s;
+}
+
+.alert-3 {
+  bottom: 0;
+  left: 30%;
+  animation: alertPop 3s ease-in-out infinite 2s;
+}
+
+@keyframes scan {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes alertPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
