@@ -1,5 +1,7 @@
 # Ethereum-Fraud-Detection
 
+🔗 Website: https://ethprotector.netlify.app/
+
 ## Overview
 
 ethprotector is a real-time Ethereum Fraud Detection System that monitors blockchain transactions, detects fraudulent activities, and visualizes transaction data using advanced algorithms and Web3 technology.
@@ -48,8 +50,8 @@ Infura API
 
 1️⃣ Clone the repository
 
-git clone https://github.com/Aadithya2201/Ethereum-Fraud-Detection.git  
-cd Ethereum-Fraud-Detection
+git clone https://github.com/rohithprem18/realtime-ethereum-fraud-detection <br>
+cd realtime-ethereum-fraud-detection
 
 2️⃣ Install dependencies
 
@@ -81,16 +83,7 @@ npm start
 
 
 ## Contributing
-
 Want to contribute? Feel free to fork this repository and submit a pull request!
 
-
-📧 Contact
-
-👨‍💻 Developer: Aadithya.R
-<br>
-📩 Email: aadithya.ramku@gmail.com
-<br>
-🔗 Website: https://ethprotector.netlify.app/
 
 
